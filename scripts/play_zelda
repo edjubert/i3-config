@@ -1,0 +1,6 @@
+#!/bin/bash
+
+killall -9 mpv
+
+DIRECTORY=zelda
+mpv --no-video --shuffle ~/Music/$DIRECTORY --input-ipc-server=/tmp/mpvsocket

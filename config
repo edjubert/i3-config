@@ -23,7 +23,8 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Noto Sans Regular 10
+#font pango:Noto Sans Regular 10
+font pango:JetBrainsMono Nerd Font 15
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -168,8 +169,9 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 ######################################
 
 # start a terminal
-# bindsym $mod+Return exec xfce4-terminal
-bindsym $mod+Return exec alacritty --config-file ~/.config/i3/.alacritty.yml
+bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Shift+Return exec xfce4-terminal --title=floating
+# bindsym $mod+Return exec alacritty --config-file ~/.config/i3/.alacritty.yml
 
 # kill focused window
 bindsym $mod+c kill
@@ -198,6 +200,8 @@ bindsym F1 exec ~/.config/i3/scripts/keyhint-2
 # Backlight control
 bindsym XF86MonBrightnessUp exec xbacklight +5 && notify-send "Brightness - ${$(xbacklight -get)%.*}%" 
 bindsym XF86MonBrightnessDown exec xbacklight -5 && notify-send "Brightness - ${$(xbacklight -get)%.*}%" 
+# bindsym XF86MonBrightnessUp  exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+# bindsym XF86MonBrightnessDown exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
 
 # change focus
 # bindsym $mod+j focus left
@@ -297,13 +301,13 @@ set $ws9 "9"
 set $ws10 "10"
 
 # use workspaces on different displays:
-# where you have to replace VGA-0/HDMI-0 with the names for your displays
+# where you have to replace VGA-0/HDMI-1-0 with the names for your displays
 # you can get from xrandr command
 #workspace $ws1 output VGA-0
 #workspace $ws2 output VGA-0
-#workspace $ws3 output HDMI-0
-#workspace $ws4 output HDMI-0
-#workspace $ws5 output HDMI-0
+#workspace $ws3 output HDMI-1-0
+#workspace $ws4 output HDMI-1-0
+#workspace $ws5 output HDMI-1-0
 
 # bind program to workspace and focus to them on startup:
 # assign [class="Xfce4-terminal"] $ws1
@@ -387,6 +391,7 @@ exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/scripts/blur-lock &
 #exec --no-startup-id xscreensaver --no-splash
 
 # Desktop notifications
+# exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc &
 # alternative if you installed aside with XFCE4:
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
@@ -433,6 +438,7 @@ for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
+for_window [class="Xfce4-terminal" title="floating"] floating enable
 
 # set border of floating window
 for_window [class="urxvt"] border pixel 1
@@ -482,7 +488,7 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 # #	    	i3bar_command i3bar --transparency
 # # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # # reference: https://i3wm.org/docs/userguide.html#_tray_output
-# 		    tray_output HDMI-0
+# 		    tray_output HDMI-1-0
 # 		    tray_padding 5
 # 
 # # When strip_workspace_numbers is set to yes,
@@ -504,7 +510,7 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 # }
 
 # you can add different bars for multidisplay setups on each display:
-# set output HDMI-0 to the display you want the bar, --transparency can be set.
+# set output HDMI-1-0 to the display you want the bar, --transparency can be set.
 # Transparency needs rgba color codes to be used where the last two letters are the transparency factor see here:
 # https://gist.github.com/lopspower/03fb1cc0ac9f32ef38f4
 # #08052be6 --> e6=90%
@@ -513,7 +519,7 @@ client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
 #	font pango:Noto Sans Regular 9, FontAwesome 9
 #	status_command i3blocks -c ~/.config/i3/i3blocks-2.conf
 #	i3bar_command i3bar --transparency
-#	output HDMI-0
+#	output HDMI-1-0
 #	position bottom
 #
 # When strip_workspace_numbers is set to yes,
@@ -566,13 +572,13 @@ bindsym $mod+r exec --no-startup-id alacritty -e ranger
 
 bindsym $mod+p exec --no-startup-id flameshot gui
 # bindsym Print exec --no-startup-id flameshot gui
-workspace $ws1 output HDMI-0
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-0
-workspace $ws4 output HDMI-0
-workspace $ws5 output HDMI-0
-workspace $ws6 output eDP-1-1
-workspace $ws7 output eDP-1-1
-workspace $ws8 output eDP-1-1
-workspace $ws9 output eDP-1-1
-workspace $ws10 output eDP-1-1
+workspace $ws1 output HDMI-1-0
+workspace $ws2 output HDMI-1-0
+workspace $ws3 output HDMI-1-0
+workspace $ws4 output HDMI-1-0
+workspace $ws5 output HDMI-1-0
+workspace $ws6 output eDP1
+workspace $ws7 output eDP1
+workspace $ws8 output eDP1
+workspace $ws9 output eDP1
+workspace $ws10 output eDP1

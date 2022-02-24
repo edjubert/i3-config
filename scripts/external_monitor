@@ -1,13 +1,13 @@
 #!/bin/bash
 
 xrandr				\
-	--output HDMI-0		\
+	--output HDMI-1-0	\
 	--mode 2560x1440	\
 	--primary		\
 	--rate 143.97		\
-	--scale 1.3x1.3		\
+	--scale 1x1		\
 	--auto			\
-	--output eDP-1-1 --off
+	--output eDP1 --off
 
 /usr/local/bin/external_workspace
 nitrogen --restore

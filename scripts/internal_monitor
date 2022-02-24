@@ -1,11 +1,11 @@
 #!/bin/bash
 
 xrandr				\
-	--output eDP-1-1	\
+	--output eDP1		\
 	--mode 2560x1440	\
 	--primary		\
 	--scale 1x1		\
-	--output HDMI-0	--off
+	--output HDMI-1-0 --off
 
 /usr/local/bin/internal_workspace
 nitrogen --restore

@@ -387,7 +387,6 @@ exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/scripts/blur-lock &
 #exec --no-startup-id xscreensaver --no-splash
 
 # Desktop notifications
-exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # alternative if you installed aside with XFCE4:
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 

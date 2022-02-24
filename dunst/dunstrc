@@ -28,7 +28,7 @@
     idle_threshold = 0
 
     ### Text ###
-    font = JetBrainsMono Nerd Font 9
+    font = Noto Emojy 12,JetBrainsMono Nerd Font 9
     line_height = 0
 
     # Possible values are:

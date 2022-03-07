@@ -1,13 +1,15 @@
 #!/bin/bash
 
-xrandr				\
-	--output HDMI-1-0	\
-	--mode 2560x1440	\
-	--primary		\
-	--rate 143.97		\
-	--scale 1x1		\
-	--auto			\
-	--output eDP1 --off
+FILE=/home/edjubert/.screenlayout/external_monitor.sh
 
-/usr/local/bin/external_workspace
-nitrogen --restore
+if [ -f "$FILE" ]; then
+  sh $FILE
+
+  echo "external" > /home/edjubert/.config/i3/.monitor_preference
+  /usr/local/bin/external_workspace
+  # nitrogen --restore
+else
+  echo "internal" > /home/edjubert/.config/i3/.monitor_preference
+  /usr/local/bin/internal_monitor
+fi
+

@@ -1,26 +1,18 @@
 #!/bin/bash
 
- xrandr				\
- 	--output HDMI-1-0	\
- 	--primary		\
- 	--mode 2560x1440	\
- 	--rate 143		\
- 	--above eDP1		\
- 	--output eDP1		\
- 	--mode 2560x1440	\
- 	--rate 160		\
+FILE=/home/edjubert/.screenlayout/dual_monitor.sh
+MONITOR="HDMI-1-0"
+CHECK=`xrandr | grep "$MONITOR connected" | wc -l`
 
-# xrandr				\
-# 	--output HDMI-1-0	\
-# 	--scale	1.3x1.3		\
-# 	--auto			\
-# 	--pos 0x0		\
-# 	--primary		\
-# 	--rate 143.97		\
-# 	--output eDP1		\
-# 	--scale 1x1		\
-# 	--auto			\
-# 	--pos 0x1872			# Scale * windowHeight
+if [ -f "$FILE" ] && [ $CHECK -eq 1 ]; then
+  sh $FILE
 
-/usr/local/bin/dual_workspace
-nitrogen --restore
+  echo "dual" > /home/edjubert/.config/i3/.monitor_preference
+  /usr/local/bin/dual_workspace
+
+  # nitrogen --restore
+else
+  echo "internal" > /home/edjubert/.config/i3/.monitor_preference
+  /usr/local/bin/internal_monitor
+fi
+

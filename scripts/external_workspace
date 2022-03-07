@@ -11,4 +11,5 @@ i3-msg workspace "8, move workspace to output HDMI-1-0"
 i3-msg workspace "9, move workspace to output HDMI-1-0"
 i3-msg workspace "10, move workspace to output HDMI-1-0"
 
+/home/edjubert/.config/i3/generate_config external
 i3-msg restart

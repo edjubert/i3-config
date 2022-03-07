@@ -1,11 +1,17 @@
 #!/bin/bash
 
-xrandr				\
-	--output eDP1		\
-	--mode 2560x1440	\
-	--primary		\
-	--scale 1x1		\
-	--output HDMI-1-0 --off
+FILE=/home/edjubert/.screenlayout/internal_monitor.sh
 
-/usr/local/bin/internal_workspace
-nitrogen --restore
+INTERNAL="eDP-1"
+CHECK=`xrandr | grep "$INTERNAL connected" | wc -l`
+
+if [ -f "$FILE" ] && [ $CHECK -eq 1 ]; then
+  sh $FILE
+
+  echo "internal" > /home/edjubert/.config/i3/.monitor_preference
+  /usr/local/bin/internal_workspace
+  # nitrogen --restore
+else
+  xrandr --auto
+fi
+

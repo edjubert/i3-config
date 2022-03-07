@@ -1,0 +1,13 @@
+#!/bin/bash
+
+FOLDER=/home/edjubert/.config/i3/scripts
+CMD=`ls $FOLDER`
+SCRIPT_NAME=`basename "$0"`
+
+for str in $CMD
+do
+  if [ "$str" != "$SCRIPT_NAME" ]; then
+	  echo "sudo ln -s $FOLDER/$str /usr/local/bin/$str"
+	  sudo ln -s $FOLDER/$str /usr/local/bin/$str 
+  fi
+done

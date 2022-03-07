@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cat /home/edjubert/.config/i3/config.d/config > /home/edjubert/.config/i3/config
+
+cat /home/edjubert/.config/i3/config.d/$1 >> /home/edjubert/.config/i3/config

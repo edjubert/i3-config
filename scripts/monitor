@@ -1,0 +1,10 @@
+#!/bin/bash
+
+PREF=`cat /home/edjubert/.config/i3/.monitor_preference`
+
+if
+  [ "$PREF" == "dual" ] || [ "$PREF" == "internal" ] || [ "$PREF" == "external" ]; then
+  /usr/local/bin/"$PREF"_monitor
+elif [ "$1" == "dual" ] || [ "$1" == "internal" ] || [ "$1" == "external" ]; then
+  /usr/local/bin/"$1"_monitor
+fi
